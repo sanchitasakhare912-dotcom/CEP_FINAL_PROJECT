@@ -56,11 +56,29 @@ cursor:pointer;
 margin-top:5px;
 }
 
+.back-btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:25px;
+background:#e6e6e6;
+color:#333;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
 .saved-msg{
 margin-top:15px;
 font-size:14px;
 color:#555;
 text-align:center;
+}
+
+.saved-box{
+margin-top:10px;
+font-size:14px;
+color:#555;
 }
 
 </style>
@@ -90,7 +108,17 @@ text-align:center;
 
 <button class="save-btn" onclick="savePreferences()">Save</button>
 
+<button class="back-btn" onclick="goBack()">Back</button>
+
 <div class="saved-msg" id="message"></div>
+
+<hr>
+
+<h3>Saved Preferences</h3>
+
+<div class="saved-box" id="savedPreferences">
+No preferences saved.
+</div>
 
 </div>
 
@@ -110,8 +138,31 @@ localStorage.setItem("preferences",JSON.stringify(prefs));
 
 document.getElementById("message").innerText="Preferences saved successfully";
 
+displayPreferences();
+
 }
 
+function displayPreferences(){
+
+const saved=localStorage.getItem("preferences");
+
+if(!saved){
+document.getElementById("savedPreferences").innerHTML="No preferences saved.";
+return;
+}
+
+const prefs=JSON.parse(saved);
+
+document.getElementById("savedPreferences").innerHTML=`
+<b>Language:</b> ${prefs.language}<br>
+<b>Text Size:</b> ${prefs.textSize}
+`;
+
+}
+
+function goBack(){
+window.location.href="caregiver-dashboard.html";
+}
 
 window.onload=function(){
 
@@ -125,6 +176,8 @@ document.getElementById("language").value=prefs.language;
 document.getElementById("textSize").value=prefs.textSize;
 
 }
+
+displayPreferences();
 
 }
 
