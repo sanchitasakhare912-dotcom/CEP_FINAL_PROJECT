@@ -34,5 +34,8 @@ function loadPeople() {
 function goBack() {
     window.location.href = "patient-dashboard.html";
 }
-
+function goBack() {
+    window.location.href = "index.html";
+}
 window.onload = loadPeople;
+
