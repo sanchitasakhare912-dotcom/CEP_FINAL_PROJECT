@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Language & Preferences</title>
+<title>Manage Reminders</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
 <style>
 
 body{
 font-family: Arial, sans-serif;
-background: linear-gradient(180deg, #cfe9f5, #fef6e4);
+background: linear-gradient(180deg,#cfe9f5,#fef6e4);
 display:flex;
 justify-content:center;
 align-items:center;
@@ -17,34 +20,45 @@ margin:0;
 
 .container{
 width:320px;
+}
+
+.login-card{
 background:white;
 border-radius:20px;
 padding:25px;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-h2{
+h1{
 text-align:center;
 margin-bottom:20px;
-color:#555;
+color:#333;
 }
 
 label{
-font-size:14px;
-color:#555;
+display:flex;
+align-items:center;
+gap:10px;
+font-size:15px;
+margin:12px 0;
+color:#444;
 }
 
-select{
+input[type="checkbox"]{
+width:18px;
+height:18px;
+}
+
+input[type="number"]{
 width:100%;
 padding:10px;
-margin:6px 0 14px 0;
 border-radius:20px;
 border:2px solid #f4b942;
 outline:none;
-background:#f7fbff;
+margin-top:5px;
 }
 
-.save-btn{
+button{
 width:100%;
 padding:12px;
 border:none;
@@ -53,79 +67,104 @@ background:linear-gradient(90deg,#9ed7d7,#8ccfcf);
 color:white;
 font-weight:bold;
 cursor:pointer;
-margin-top:5px;
+margin-top:10px;
 }
 
-.saved-msg{
-margin-top:15px;
+button:hover{
+opacity:0.9;
+}
+
+.back-btn{
+background:#e6e6e6;
+color:#333;
+}
+
+.saved-box{
 font-size:14px;
 color:#555;
-text-align:center;
+margin-top:10px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
+  <div class="login-card">
 
-<h2>Language & Preferences</h2>
+    <h1>🔔 Manage Reminders</h1>
 
-<label>Select Language</label>
+    <label>
+      <input type="checkbox" id="medicineReminder">
+      Enable Medicine Reminder
+    </label>
 
-<select id="language">
-<option value="en">English</option>
-<option value="hi">Hindi</option>
-<option value="mr">Marathi</option>
-</select>
+    <label>
+      <input type="checkbox" id="mealReminder">
+      Enable Meal Reminder
+    </label>
 
-<label>Text Size</label>
+    <label>
+      <input type="checkbox" id="restReminder">
+      Enable Rest Reminder
+    </label>
 
-<select id="textSize">
-<option value="small">Small</option>
-<option value="medium">Medium</option>
-<option value="large">Large</option>
-</select>
+    <label>
+      <input type="checkbox" id="waterReminder">
+      Enable Water Reminder
+    </label>
 
-<button class="save-btn" onclick="savePreferences()">Save</button>
+    <label>Water Interval (minutes)</label>
+    <input type="number" id="waterInterval" min="10" value="60">
 
-<div class="saved-msg" id="message"></div>
+    <button onclick="saveReminderSettings()">Save Settings</button>
+    <button onclick="testReminder()">Test Reminder</button>
 
+    <button class="back-btn" onclick="goBack()">Back</button>
+
+    <!-- Added Saved Reminder Section -->
+
+    <hr>
+
+    <h3>Saved Reminder Settings</h3>
+
+    <div class="saved-box" id="savedReminders">
+      No reminder settings saved.
+    </div>
+
+  </div>
 </div>
+
+<script src="manage-reminders.js"></script>
+<script src="caregiver.js"></script>
 
 <script>
 
-function savePreferences(){
+function displayReminderSettings(){
 
-const language=document.getElementById("language").value;
-const textSize=document.getElementById("textSize").value;
+const saved = localStorage.getItem("reminderSettings");
 
-const prefs={
-language,
-textSize
-};
-
-localStorage.setItem("preferences",JSON.stringify(prefs));
-
-document.getElementById("message").innerText="Preferences saved successfully";
-
+if(!saved){
+document.getElementById("savedReminders").innerHTML = "No reminder settings saved.";
+return;
 }
 
+const settings = JSON.parse(saved);
+
+document.getElementById("savedReminders").innerHTML = `
+<b>Medicine Reminder:</b> ${settings.medicine ? "ON" : "OFF"}<br>
+<b>Meal Reminder:</b> ${settings.meal ? "ON" : "OFF"}<br>
+<b>Rest Reminder:</b> ${settings.rest ? "ON" : "OFF"}<br>
+<b>Water Reminder:</b> ${settings.water ? "ON" : "OFF"}<br>
+<b>Water Interval:</b> ${settings.interval} minutes
+`;
+
+}
 
 window.onload=function(){
-
-const saved=localStorage.getItem("preferences");
-
-if(saved){
-
-const prefs=JSON.parse(saved);
-
-document.getElementById("language").value=prefs.language;
-document.getElementById("textSize").value=prefs.textSize;
-
-}
-
+displayReminderSettings();
 }
 
 </script>
