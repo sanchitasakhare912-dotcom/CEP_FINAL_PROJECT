@@ -188,3 +188,47 @@ body {
 .people {
   background: #3fc1a3;
 }
+/* Top right buttons */
+.top-actions{
+display:flex;
+gap:10px;
+position:absolute;
+top:20px;
+right:560px;
+}
+
+/* Caregiver button */
+.caregiver-btn{
+background:linear-gradient(135deg,#6ec6d9,#5aa9b8);
+color:white;
+border:none;
+padding:8px 16px;
+border-radius:20px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+transition:all 0.2s ease;
+}
+
+.caregiver-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(0,0,0,0.25);
+}
+
+/* Logout button */
+.logout-btn{
+background:linear-gradient(135deg,#ff7a7a,#ff5252);
+color:white;
+border:none;
+padding:8px 16px;
+border-radius:20px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+transition:all 0.2s ease;
+}
+
+.logout-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(0,0,0,0.25);
+}
