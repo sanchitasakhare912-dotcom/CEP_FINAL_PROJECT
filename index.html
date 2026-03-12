@@ -5,8 +5,7 @@
   <title>Dementia Care</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <button onclick="logout()">Logout</button>
-
+  
 </head>
 <body>
 
@@ -21,7 +20,10 @@
     </div>
 
     <!-- Caregiver access -->
-    <button onclick="goToVerify()">⚙ Caregiver</button>
+    <div class="top-actions">
+<button class="caregiver-btn">⚙ Caregiver</button>
+<button class="logout-btn">Logout</button>
+</div>
 
   </div>
 
@@ -101,3 +103,4 @@
 <script src="caregiver.js"></script>
 </body>
 </html>
+
