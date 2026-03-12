@@ -1,18 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My People</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My People</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+font-family:'Nunito',sans-serif;
+background:linear-gradient(180deg,#cfe9f5,#fef6e4);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.container{
+width:340px;
+background:white;
+border-radius:25px;
+padding:20px;
+box-shadow:0 10px 40px rgba(0,0,0,0.15);
+text-align:center;
+}
+
+h2{
+margin-bottom:20px;
+font-weight:800;
+}
+
+.people-list{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.person-card{
+display:flex;
+align-items:center;
+gap:12px;
+padding:12px;
+border-radius:20px;
+background:linear-gradient(90deg,#fdf0d5,#f8e2c0);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.person-card img{
+width:55px;
+height:55px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.person-info{
+text-align:left;
+}
+
+.person-name{
+font-weight:bold;
+font-size:16px;
+}
+
+.person-relation{
+font-size:14px;
+color:#555;
+}
+
+.back-btn{
+margin-top:20px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#9ed7d7,#8ccfcf);
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.back-btn:hover{
+opacity:0.9;
+}
+
+</style>
 
 </head>
 <body>
 
+<div class="container">
+
 <h2>My Family</h2>
 
-<div id="peopleContainer"></div>
+<div id="peopleContainer" class="people-list"></div>
 
-<br>
-<button onclick="goBack()">Back</button>
+<button class="back-btn" onclick="goBack()">Back</button>
+
+</div>
 
 <script src="patient-people.js"></script>
 
