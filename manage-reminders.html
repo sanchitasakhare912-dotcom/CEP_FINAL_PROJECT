@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Manage Reminders</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background: linear-gradient(180deg,#cfe9f5,#fef6e4);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+width:320px;
+}
+
+.login-card{
+background:white;
+border-radius:20px;
+padding:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+color:#333;
+}
+
+label{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:15px;
+margin:12px 0;
+color:#444;
+}
+
+input[type="checkbox"]{
+width:18px;
+height:18px;
+}
+
+input[type="number"]{
+width:100%;
+padding:10px;
+border-radius:20px;
+border:2px solid #f4b942;
+outline:none;
+margin-top:5px;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#9ed7d7,#8ccfcf);
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+opacity:0.9;
+}
+
+.back-btn{
+background:#e6e6e6;
+color:#333;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="login-card">
+
+    <h1>🔔 Manage Reminders</h1>
+
+    <label>
+      <input type="checkbox" id="medicineReminder">
+      Enable Medicine Reminder
+    </label>
+
+    <label>
+      <input type="checkbox" id="mealReminder">
+      Enable Meal Reminder
+    </label>
+
+    <label>
+      <input type="checkbox" id="restReminder">
+      Enable Rest Reminder
+    </label>
+
+    <label>
+      <input type="checkbox" id="waterReminder">
+      Enable Water Reminder
+    </label>
+
+    <label>Water Interval (minutes)</label>
+    <input type="number" id="waterInterval" min="10" value="60">
+
+    <button onclick="saveReminderSettings()">Save Settings</button>
+    <button onclick="testReminder()">Test Reminder</button>
+
+    <button class="back-btn" onclick="goBack()">Back</button>
+
+  </div>
+</div>
+
+<script src="manage-reminders.js"></script>
+<script src="caregiver.js"></script>
+
+</body>
+</html>

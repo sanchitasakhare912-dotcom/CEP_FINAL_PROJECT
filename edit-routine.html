@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Routine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+       background: linear-gradient(180deg, #cfe9f5, #fef6e4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 380px;
+    }
+
+    .card {
+      background: #f8f8f8;
+      padding: 25px;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #6FCF97;
+    }
+
+    .meal-btn {
+      background: #6FCF97;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .rest-btn {
+      background: #9b59b6;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f2a48f;
+      padding: 12px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .item-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .delete-btn {
+      background: #e74c3c;
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .back-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 20px;
+      border: none;
+      background: #6FCF97;
+      color: white;
+      font-weight: bold;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    hr {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <h1>Add Routine</h1>
+
+    <!-- 🍽️ ADD MEAL -->
+    <h2>🍽️ Add Meal</h2>
+
+    <div class="input-group">
+      <input type="text" id="mealNameInput" placeholder="Meal Name">
+      <input type="time" id="mealTimeInput">
+      <button class="meal-btn" onclick="addMeal()">Add</button>
+    </div>
+
+    <ul id="mealList"></ul>
+
+    <hr>
+
+    <!-- 😴 ADD REST -->
+    <h2>😴 Add Rest</h2>
+
+    <div class="input-group">
+      <input type="text" id="restNameInput" placeholder="Rest Type">
+      <input type="time" id="restTimeInput">
+      <button class="rest-btn" onclick="addRest()">Add</button>
+    </div>
+
+    <ul id="restList"></ul>
+
+    <button class="back-btn" onclick="goBack()">Back</button>
+
+  </div>
+</div>
+
+<script src="edit-routine.js"></script>
+
+</body>
+</html>

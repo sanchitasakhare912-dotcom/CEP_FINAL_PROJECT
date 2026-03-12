@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Caregiver Account</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+       background: linear-gradient(180deg, #cfe9f5, #fef6e4);
+    }
+
+    .card {
+      width: 350px;
+      padding: 35px 25px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(7, 7, 7, 0.15);
+      text-align: center;
+    }
+
+    .card h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+ input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid #6FCF97;   /* 👈 Green border */
+  font-size: 15px;
+  margin-bottom: 15px;
+  outline: none;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border: 2px solid #2F6F73;   /* Dark border when clicked */
+}
+
+
+    .register-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      background: linear-gradient(to right, #6fcf97, #56ccf2);
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .register-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .error-msg {
+      margin-top: 12px;
+      font-size: 14px;
+      color: red;
+    }
+    .input-group input:focus {
+  border: 2px solid #080909;   /* Green border on click */
+  box-shadow: 0 0 8px rgba(111, 207, 151, 0.5);
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <h1>Create Account</h1>
+  <p>Register as Caregiver</p>
+
+  <form id="registerForm">
+
+    <div class="input-group">
+      <input type="text" id="newUser" placeholder="Username" required>
+    </div>
+
+    <div class="input-group">
+      <input type="password" id="newPass" placeholder="Password" required>
+    </div>
+
+    <div class="input-group">
+      <input type="password" id="confirmPass" placeholder="Confirm Password" required>
+    </div>
+
+    <button type="submit" class="register-btn">Register</button>
+
+    <p id="regMessage" class="error-msg"></p>
+
+  </form>
+
+</div>
+
+<script src="register.js"></script>
+
+</body>
+</html>

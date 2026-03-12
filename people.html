@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My People</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #cfe9f5, #fef6e4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: white;
+    width: 380px;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form-card input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background: #6FCF97;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.saved-title {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.people-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.person-card {
+    background: #f9b6a7;
+    padding: 12px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.person-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.person-info img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-bar">
+        <button class="back-btn" onclick="goBack()">←</button>
+        <h2>Add Relative</h2>
+        <div></div>
+    </div>
+
+    <div class="form-card">
+        <input type="text" id="personName" placeholder="Name">
+        <input type="text" id="personRelation" placeholder="Relation">
+        <input type="file" id="personPhoto" accept="image/*">
+        <button class="add-btn" onclick="addPerson()">Add</button>
+    </div>
+
+    <h3 class="saved-title">Saved Relatives</h3>
+
+    <div id="peopleList" class="people-list"></div>
+
+</div>
+
+<script src="people.js"></script>
+
+</body>
+</html>

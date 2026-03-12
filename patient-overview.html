@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patient Overview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background: linear-gradient(180deg, #cfe9f5, #fef6e4);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+width:320px;
+background:white;
+border-radius:20px;
+padding:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+color:#555;
+}
+
+label{
+font-size:14px;
+color:#555;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:6px 0 14px 0;
+border-radius:20px;
+border:2px solid #f4b942;
+outline:none;
+}
+
+.save-btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#a6fafa,#8ccfcf);
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin-top:5px;
+}
+
+hr{
+margin:20px 0;
+border:none;
+border-top:1px solid #ddd;
+}
+
+.saved-box{
+font-size:14px;
+color:#555;
+}
+
+.delete-btn{
+margin-top:10px;
+padding:6px 14px;
+border:none;
+border-radius:15px;
+background:#ff6b6b;
+color:white;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Patient Overview</h2>
+
+<label>Patient Name</label>
+<input type="text" id="patientName">
+
+<label>Patient Age</label>
+<input type="number" id="patientAge">
+
+<label>Patient Condition</label>
+<input type="text" id="patientCondition">
+
+<label>Patient Contact</label>
+<input type="text" id="patientContact">
+
+<button class="save-btn" onclick="savePatientOverview()">Save Changes</button>
+
+<hr>
+
+<h3>Saved Patient Information</h3>
+
+<div class="saved-box" id="savedPatient">
+No patient information saved.
+</div>
+
+</div>
+
+
+<script>
+
+function savePatientOverview(){
+
+const name = document.getElementById("patientName").value;
+const age = document.getElementById("patientAge").value;
+const condition = document.getElementById("patientCondition").value;
+const contact = document.getElementById("patientContact").value;
+
+const patient={
+name,
+age,
+condition,
+contact
+};
+
+localStorage.setItem("patientInfo",JSON.stringify(patient));
+
+displayPatient();
+
+}
+
+
+function displayPatient(){
+
+const saved=localStorage.getItem("patientInfo");
+
+if(!saved){
+document.getElementById("savedPatient").innerHTML="No patient information saved.";
+return;
+}
+
+const patient=JSON.parse(saved);
+
+document.getElementById("savedPatient").innerHTML=`
+<b>Name:</b> ${patient.name}<br>
+<b>Age:</b> ${patient.age}<br>
+<b>Condition:</b> ${patient.condition}<br>
+<b>Contact:</b> ${patient.contact}<br>
+
+<button class="delete-btn" onclick="deletePatient()">Delete</button>
+`;
+
+}
+
+
+function deletePatient(){
+
+localStorage.removeItem("patientInfo");
+
+displayPatient();
+
+}
+
+
+window.onload=function(){
+displayPatient();
+}
+
+</script>
+
+</body>
+</html>
